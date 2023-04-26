@@ -42,5 +42,5 @@ Route::get('admin/posts/example', function () {
     return "This url is " . $url;
 })->name('admin.home');
 ```
-###### Link example
+###### href example
 `e.g. <a href="{{ route('admin.home') }}">Click</a>`
