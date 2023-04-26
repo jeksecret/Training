@@ -35,3 +35,17 @@
     <script>alert('Contact Page')</script>
 @endsection
 ```
+### Using for and foreach in blade template:
+###### In `contact.blade.php`
+```php
+@extends('layouts/app')
+
+@section('content')
+    <h1>Contact Page</h1>
+    @if (count($people))
+        @foreach ($people as $person)
+            <li> {{$person}} </li>
+        @endforeach
+    @endif
+@endsection
+```
