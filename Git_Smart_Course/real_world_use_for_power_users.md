@@ -9,7 +9,7 @@ git
 git status
 git add .
 git commit -help
-git commit -
+git commit -m
 git push -f
 git push origin master
 git lfs migrate import
