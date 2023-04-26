@@ -1,7 +1,4 @@
 # Insights on this Section Course
-### Blade Template:
-- Blade is a templating engine that is used in Laravel framework.
-
 ### Creating views and custom method:
 
 ##### Inside `views folder` create a file by naming it `contact.blade.php`
