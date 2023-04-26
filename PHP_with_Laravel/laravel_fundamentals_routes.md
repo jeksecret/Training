@@ -34,7 +34,7 @@ Route::get('/users/{id}/{name}', function ($id, $name) {
     return "This is user " . $id . ", " . $name;
 });
 ```
-##### Naming a route
+###### Naming a route
 ```php
 Route::get('admin/posts/example', function () {
     $url = route('admin.home');
@@ -42,5 +42,5 @@ Route::get('admin/posts/example', function () {
     return "This url is " . $url;
 })->name('admin.home');
 ```
-##### Link example
+###### Link example
 `e.g. <a href="{{ route('admin.home') }}">Click</a>`
