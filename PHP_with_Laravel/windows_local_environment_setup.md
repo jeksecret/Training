@@ -26,7 +26,11 @@ use "dbname";
 
 `use;` - _Use the created database_.
 
+### Installing Laravel:
 ```
 composer create-project laravel/laravel "project-name"
+php artisan serve
 ```
 `composer create-project laravel/laravel` - _Create a new laravel project via the Composer command_.
+
+`php artisan serve` - _Run applications on the PHP development server.
