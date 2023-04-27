@@ -1,4 +1,4 @@
-# Insights on this Section Course
+# Insights on this Section
 ### Introduction to Laravel and MVC
 #### MVC stands for:
 `Model` - _Deals with database_.
