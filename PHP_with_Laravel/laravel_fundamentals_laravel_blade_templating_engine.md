@@ -1,4 +1,4 @@
-# Insights on this Section Course
+# Insights on this Section
 ### Blade Template:
 - Blade is a templating engine that is used in Laravel framework.
 ### Layout setup:
