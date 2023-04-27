@@ -1,4 +1,4 @@
-# Insights on this Section Course
+# Insights on this Section
 `.env file`
 - Where you store the sensitive credentials in your code.
 
