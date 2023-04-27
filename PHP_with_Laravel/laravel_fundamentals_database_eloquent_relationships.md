@@ -3,6 +3,7 @@
 - Allows to relay tables in a very easy format using functions.
 
 `one to one relationship`
+- A one model can be associated with another one model.
 > ###### in User Model:
 ```php
 public function post() {
@@ -31,6 +32,7 @@ Route::get('post/{id}/user', function ($id) {
 });
 ```
 `one to many relationship`
+- A single model is the parent to one or more child models.
 > ###### in User Model:
 ```php
 public function posts() {
