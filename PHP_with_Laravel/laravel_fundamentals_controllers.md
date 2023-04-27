@@ -1,4 +1,4 @@
-# Insights on this Section Course
+# Insights on this Section
 ### Creating Controllers:
 `namespace`
   - Allows to use the same names or class name in different part of application.
