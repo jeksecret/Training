@@ -1,4 +1,4 @@
-# Insights on this Section Course
+# Insights on this Section
 ### PRIRP (People Rarely Incinerate Red Porcupines) acronym stand for:
 - **Project > Repo > Ignore > Remote > Push**
 ### Flow:
