@@ -1,5 +1,4 @@
-
-# Insights on this Section Course
+# Insights on this Section
 ### Stashing:
 - Stash your uncommitted changes and resetting the history to the last commit.
 ### Commit:
