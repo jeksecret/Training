@@ -1,4 +1,4 @@
-# Insights on this Section Course
+# Insights on this Section
 ### Laravel Structure Overview:
 `config folder`
 - Where the configuration files are located._
