@@ -1,4 +1,4 @@
-# Insights on this Section Course
+# Insights on this Section
 ### Cloning Remote Repos:
 - Clone remote repos in SourceTree by using the HTTPS version *(if using pc)*.
 ### Terminal:
