@@ -1,4 +1,4 @@
-# Insights on this Section Course
+# Insights on this Section
 ### Setting up Tools:
 - Download `XAMPP` installer for PHP and install.
 - Download `Git` installer and install.
