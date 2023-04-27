@@ -1,4 +1,4 @@
-# Insights on this Section Course
+# Insights on this Section
 ### Creating views and custom method:
 ##### Inside `views folder` create a file by naming it `contact.blade.php`
 ###### Create a custom contact method in PostsController
