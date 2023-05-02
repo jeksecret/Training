@@ -7,6 +7,12 @@ public function address() {
     return $this->hasOne(Address::class);
 }
 ```
+> ###### in Address Model:
+```php
+protected $fillable = [
+    'name'
+];
+```
 > ###### web.php
 `create data`
 ```php
