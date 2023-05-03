@@ -1,5 +1,5 @@
 # Insights on this Section
-> ###### CreatePostsRequest.php file`
+> ###### make a request file CreatePostsRequest.php`
 ```php
 php artisan make:request CreatePostsRequest
 ```
