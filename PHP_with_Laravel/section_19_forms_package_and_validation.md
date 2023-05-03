@@ -6,7 +6,7 @@
 composer require laravelcollective/html
 ```
 `modify create form`
-```php
+```blade
 @extends('layouts.app')
 
 @section('content')
@@ -44,7 +44,7 @@ composer require laravelcollective/html
 @endsection
 ```
 `modify edit and delete form`
-```php
+```blade
 @extends('layouts.app')
 
 @section('content')
