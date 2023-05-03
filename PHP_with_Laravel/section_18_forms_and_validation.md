@@ -108,7 +108,7 @@ public function destroy(string $id)
 }
 ```
 #### views>layouts>app.blade.php
-```html
+```blade
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -127,7 +127,7 @@ public function destroy(string $id)
 </html>
 ```
 #### views>posts>create.blade.php
-```html
+```blade
 @extends('layouts.app')
 
 @section('content')
@@ -144,7 +144,7 @@ public function destroy(string $id)
 @endsection
 ```
 #### views>posts>edit.blade.php
-```html
+```blade
 @extends('layouts.app')
 
 @section('content')
@@ -168,7 +168,7 @@ public function destroy(string $id)
 @endsection
 ```
 #### views>posts>index.blade.php
-```html
+```blade
 @extends('layouts.app')
 
 @section('content')
@@ -187,7 +187,7 @@ public function destroy(string $id)
 @endsection
 ```
 #### views>posts>show.blade.php
-```html
+```blade
 @extends('layouts.app')
 
 @section('content')
@@ -197,7 +197,7 @@ public function destroy(string $id)
 @endsection
 ```
 #### views>contact.blade.php
-```html
+```blade
 @extends('layouts/app')
 
 @section('content')
