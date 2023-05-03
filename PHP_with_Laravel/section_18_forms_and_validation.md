@@ -107,3 +107,105 @@ public function destroy(string $id)
     return redirect('/posts');
 }
 ```
+#### views>layouts>app.blade.php
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Laravel</title>
+</head>
+<body>
+    <div class="container">
+        @yield('content')
+    </div>
+
+    @yield('footer')
+</body>
+</html>
+```
+#### views>posts>create.blade.php
+```html
+@extends('layouts.app')
+
+@section('content')
+
+    <h1>Create Post</h1>
+
+    <form action="/posts" method="post">
+        {{ csrf_field() }}
+        <input type="text" name="title">
+        <input type="text" name="content">
+        <input type="submit" name="submit">
+    </form>
+
+@endsection
+```
+#### views>posts>edit.blade.php
+```html
+@extends('layouts.app')
+
+@section('content')
+
+    <h1>Edit Post</h1>
+
+    <form action="/posts/{{$post->id}}" method="post">
+        {{ csrf_field() }}
+        <input type="hidden" name="_method" value="PUT">
+        <input type="text" name="title" value="{{$post->title}}">
+        <input type="text" name="content" value="{{$post->content}}">
+        <input type="submit" name="submit">
+    </form>
+
+    <form action="/posts/{{$post->id}}" method="post">
+        {{ csrf_field() }}
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="delete">
+    </form>
+
+@endsection
+```
+#### views>posts>index.blade.php
+```html
+@extends('layouts.app')
+
+@section('content')
+
+    {{-- <h1>{{$post->title}}</h1> --}}
+
+    <ul>
+        @foreach ($posts as $post)
+            <div class="img-container">
+                <img height="100" src="{{$post->path}}" alt="">
+            </div>
+            <li><a href="{{route('posts.show', $post->id)}}">{{$post->title}}</a></li>
+        @endforeach
+    </ul>
+
+@endsection
+```
+#### views>posts>show.blade.php
+```html
+@extends('layouts.app')
+
+@section('content')
+
+    <h1><a href="{{route('posts.edit', $post->id)}}">{{$post->title}}</a></h1>
+
+@endsection
+```
+#### views>contact.blade.php
+```html
+@extends('layouts/app')
+
+@section('content')
+    <h1>Contact Page</h1>
+    @if (count($people))
+        @foreach ($people as $person)
+            <li> {{$person}} </li>
+        @endforeach
+    @endif
+@endsection
+```
