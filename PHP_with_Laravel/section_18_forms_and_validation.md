@@ -35,38 +35,24 @@ public function store(CreatePostsRequest $request)
 {
     //
     // Basic Validation
-    // $this->validate($request, [
-    //     'title'=>'required|max:4',
-    //     'content'=>'required'
-    // ]);
+    $this->validate($request, [
+      'title'=>'required|max:4',
+      'content'=>'required'
+    ]);
 
-    // Post::create($request->all());
-
-    // $input = $request->all();
-    // $input['title'] = $request->title;
-    // Post::create($request->all());
-
-    // $post = new Post;
-    // $post->user_id = 0;
-    // $post->title = $request->title;
-    // $post->content = $request->content;
-    // $post->save();
-
-    // return redirect('/posts');
-
-    // $file = $request->file('file');
-    // echo $file->getClientOriginalName();
-    // echo "<br/>";
-    // echo $file->getClientSize();
+    Post::create($request->all());
 
     $input = $request->all();
+    $input['title'] = $request->title;
+    Post::create($request->all());
 
-    if($file = $request->file('file')) {
-        $name = $file->getClientOriginalName();
-        $file->move('images', $name);
-        $input['path'] = $name;
-    }
-    Post::create($input);
+    $post = new Post;
+    $post->user_id = 0;
+    $post->title = $request->title;
+    $post->content = $request->content;
+    $post->save();
+
+    return redirect('/posts');
 }
 ```
 `Display the specified resource.`
