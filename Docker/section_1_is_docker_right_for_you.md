@@ -1,4 +1,7 @@
 # Insights on this Section
+### Docker:
+- Docker lets you build, test, and deploy applications quickly.
+- Docker packages software into standardized units called containers that have everything the software needs to run including libraries, system tools, code, and runtime.
 ### 3 advantages in using Docker:
 1. saving time and money
 2. Portability
