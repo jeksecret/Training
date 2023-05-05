@@ -1,6 +1,6 @@
 # Insights on this Section
 #### Hello world with Docker:
-`commands`
+`command`
 ```
 docker run hello-world
 ```
@@ -28,6 +28,7 @@ ls -la home
 exit
 ```
 #### Downloading and Storing Docker Images:
+`commands`
 ```
 docker run docker.io/library/hello-world
 
