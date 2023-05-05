@@ -11,3 +11,8 @@ docker info
 
 docker-compose --version
 ```
+#### Docker Desktop requires a newer WSL kernel version.
+```
+wsl --update
+wsl --set-default-version 2
+```
