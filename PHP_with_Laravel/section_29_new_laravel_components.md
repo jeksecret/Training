@@ -1,6 +1,8 @@
 # Insights on this Section
 #### Components:
 - Laravel components are a small entity with an interface that is well defined. These serve as the building block for a large software system. All the related data is encapsulated in the reusable unit.
+> ###### in views folder, create a componenes folder and componentname blade file.
+`latest-posts.blade.php`
 > ###### Returning the view in the controller@index:
 ```php
 return view('components.latest-posts');
