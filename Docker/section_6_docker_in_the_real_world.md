@@ -60,3 +60,13 @@ docker container stop web2
 
 docker container stop redis
 ```
+#### Persisting data to your Docker Host
+```
+docker volume create web2_redis
+
+docker volume ls
+
+docker volume inspect web2_redis
+
+docker container run --rm -itd -p 6379:6379 --name redis --net firstnetwork -v web2_redis:/data redis:3.2-alpine
+```
