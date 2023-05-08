@@ -28,8 +28,12 @@ use App\Models\Post;
 <?php
 public function index()
 {
-    $posts = Post::all();
+    // $posts = Post::all();
+
     // $posts = auth()->user()->posts;
+
+    // paginate
+    $posts = auth()->user()->posts()->paginate(5);
 
     // dd($posts);
 
