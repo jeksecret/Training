@@ -1,74 +1,119 @@
 # Insights on this Section
 #### Linking Containers with Docker Networks:
-> ###### creating docker image
+> ###### Building and Pushing Docker Images
 ```
-docker image build -t web2 .
-```
-> ###### pulling down redis image
-```
-docker pull redis:3.2-alpine
-```
-> ###### checking networks
-```
-docker network inspect bridge
-```
-> ###### running redis container
-```
-docker container run --rm -itd -p 6379:6379 --name redis redis:3.2-alpine
-```
-> ###### run flask app
-```
-docker container run --rm -itd -p 5000:5000 -e FLASK_APP=app.py -e FLASK_DEBUG=1 --name web2 -v $PWD:/app web2
-```
-> ###### finding local ip address of the redis server
-```
-docker exec redis ifconfig
+docker --help
 
-docker exec web2 ifconfig
+docker image --help
+
+docker image build -t web1 .
+
+docker image inspect web1
+
+docker image build -t web1:1.0 .
+
+docker image ls
+
+docker image rm web1:1.0
+
+docker image ls
+
+docker login
+
+docker image tag web1 nickjj/web1:latest
+
+docker image ls
+
+docker image push nickjj/web1
+
+docker image rm -f [image id]
+
+docker image ls
+
+docker pull nickjj/web1
+
+docker image ls
 ```
-> ###### ping address
+> ###### Running Docker Containers
 ```
-docker exec web2 ping e.g. ip addres(127.0.0.1)
+docker image tag nickjj/web1 web1
+
+docker image rm nickjj/web1
+
+docker image ls
+
+docker container ls
+
+docker container run -it -p 5000:5000 -e FLASK_APP=app.py web1
+
+docker container ls
+
+CTRL + C
+
+docker container ls -a
+
+docker container rm [container id]
+
+docker container run -it -p 5000:5000 -e FLASK_APP=app.py \
+ --rm --name web1 web1
+
+CTRL + C
+
+docker container ls -a
+
+docker container run -it -p 5000:5000 -e FLASK_APP=app.py \
+ --rm --name web1 -d web1
+
+docker container logs web1
+
+docker container logs -f web1
+
+CTRL + C
+
+docker container stats
+
+CTRL + C
+
+docker container run -it -p 5000:5000 -e FLASK_APP=app.py \
+ --rm --name web1 -d web1
+
+docker container run -it -p 5000 -e FLASK_APP=app.py \
+ --rm --name web1_2 -d web1
+
+docker container ls
+
+docker container run -it -p 5000 -e FLASK_APP=app.py \
+ --rm --name web1_2 -d --restart on-failure web1
+
+docker container run -it -p 5000 -e FLASK_APP=app.py \
+ --name web1_3 -d --restart on-failure web1
+
+docker container ls
+
+docker container stop web1
+
+docker container stop web1_2
+
+docker container stop web1_3
+
+docker container run --help
 ```
-> ###### linking redis and web2
+> ###### Live Code Reloading With Volumes
 ```
-docker exec redis cat /etc/hosts
+docker container run -it -p 5000:5000 -e FLASK_APP=app.py \
+  --rm --name web1 web1
 
-docker network create --driver bridge firstnetwork
+CTRL + C
 
-docker container stop web2
+docker container run -it -p 5000:5000 -e FLASK_APP=app.py \
+  -e FLASK_DEBUG=1 --rm --name web1 web1
 
-docker container stop redis
+CTRL + C
 
-docker container run --rm -itd -p 6379:6379 --name redis --net firstnetwork redis:3.2-alpine
+docker image build -t web1 .
 
-docker container run --rm -itd -p 5000:5000 -e  FLASK_APP=app.py -e FLASK_DEBUG=1 --name web2 -v $PWD:/app --net firstnetwork web2
+docker container run -it -p 5000:5000 -e FLASK_APP=app.py \
+  -e FLASK_DEBUG=1 --rm --name web1 -v $PWD:/app web1
 
-docker network inspect firstnetwork
-
-docker exec web2 ping redis
-
-docker exec -it redis redis-cli
-
-KEYS *
-
-INCRBY web2_counter 1000
-```
-> ###### stopping the two containers linking
-```
-docker container stop web2
-
-docker container stop redis
-```
-#### Persisting data to your Docker Host
-```
-docker volume create web2_redis
-
-docker volume ls
-
-docker volume inspect web2_redis
-
-docker container run --rm -itd -p 6379:6379 --name redis --net firstnetwork -v web2_redis:/data redis:3.2-alpine
-
-sudo ls -la /var/lib/docker/volumes/web2_redis/_data
+docker container inspect web1
 ```
