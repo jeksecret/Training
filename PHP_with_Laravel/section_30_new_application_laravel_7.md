@@ -108,6 +108,8 @@ public function destroy(Post $post)
 {
     $post->delete();
 
+    $this->authorize('delete', $post);
+
     Session::flash('deleted-message', 'Post was deleted');
 
     return back();
@@ -134,6 +136,11 @@ public function view(User $user, Post $post): bool
     return $user->id === $post->user_id;
 }
 public function update(User $user, Post $post): bool
+{
+    //
+    return $user->id === $post->user_id;
+}
+public function delete(User $user, Post $post): bool
 {
     //
     return $user->id === $post->user_id;
