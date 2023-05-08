@@ -28,5 +28,35 @@ docker exec web2 ifconfig
 ```
 > ###### ping address
 ```
-docker exec web2 ping e.g.(127.0.0.1)
+docker exec web2 ping e.g. ip addres(127.0.0.1)
+```
+> ###### linking redis and web2
+```
+docker exec redis cat /etc/hosts
+
+docker network create --driver bridge firstnetwork
+
+docker container stop web2
+
+docker container stop redis
+
+docker container run --rm -itd -p 6379:6379 --name redis --net firstnetwork redis:3.2-alpine
+
+docker container run --rm -itd -p 5000:5000 -e  FLASK_APP=app.py -e FLASK_DEBUG=1 --name web2 -v $PWD:/app --net firstnetwork web2
+
+docker network inspect firstnetwork
+
+docker exec web2 ping redis
+
+docker exec -it redis redis-cli
+
+KEYS *
+
+INCRBY web2_counter 1000
+```
+> ###### stopping the two containers linking
+```
+docker container stop web2
+
+docker container stop redis
 ```
