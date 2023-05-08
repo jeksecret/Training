@@ -1,5 +1,4 @@
 # Insights on this Section
-#### Linking Containers with Docker Networks:
 > ###### Building and Pushing Docker Images
 ```cmd
 docker --help
@@ -117,7 +116,7 @@ docker container run -it -p 5000:5000 -e FLASK_APP=app.py \
 
 docker container inspect web1
 ```
-> ######
+> ###### Linking Containers With Docker Networks
 ```
 docker image build -t web2 .
 
