@@ -1,7 +1,7 @@
 # Insights on this Section
 #### Linking Containers with Docker Networks:
 > ###### Building and Pushing Docker Images
-```
+```cmd
 docker --help
 
 docker image --help
