@@ -117,3 +117,128 @@ docker container run -it -p 5000:5000 -e FLASK_APP=app.py \
 
 docker container inspect web1
 ```
+> ######
+```
+docker image build -t web2 .
+
+docker image pull redis:3.2-alpine
+
+docker network ls
+
+ifconfig (MacOS / Linux)
+
+ipconfig (Windows)
+
+docker network inspect bridge
+
+docker run --rm -itd -p 6379:6379 --name redis redis:3.2-alpine
+
+docker container run --rm -itd -p 5000:5000 -e FLASK_APP=app.py \
+ -e FLASK_DEBUG=1 --name web2 -v $PWD:/app web2
+
+docker exec redis ifconfig
+
+docker exec web2 ifconfig
+
+docker exec web2 ping 172.17.0.3
+
+CTRL + C
+
+docker exec redis cat /etc/hosts
+
+docker container ls
+
+docker network create --driver bridge firstnetwork
+
+docker network inspect firstnetwork
+
+docker container stop web2
+
+docker container stop redis
+
+docker container run --rm -itd -p 6379:6379 --name redis \
+ --net firstnetwork redis:3.2-alpine
+
+docker container run --rm -itd -p 5000:5000 -e FLASK_APP=app.py \
+ -e FLASK_DEBUG=1 --name web2 --net firstnetwork -v $PWD:/app web2
+
+docker network inspect firstnetwork
+
+docker exec web2 ping redis
+
+docker exec -it redis redis-cli
+
+KEYS *
+
+INCRBY web2_counter 1000000
+
+CTRL + D
+
+docker container stop web2
+
+docker container stop redis
+```
+> ###### Persisting Data to Your Docker Host
+```
+docker container run --rm -itd -p 6379:6379 --name redis \
+ --net firstnetwork redis:3.2-alpine
+
+docker container run --rm -itd -p 5000:5000 -e FLASK_APP=app.py \
+ -e FLASK_DEBUG=1 --name web2 --net firstnetwork -v $PWD:/app web2
+
+docker container stop redis
+
+docker container run --rm -itd -p 6379:6379 --name redis \
+ --net firstnetwork redis:3.2-alpine
+
+docker container stop redis
+
+docker volume create web2_redis
+
+docker volume ls
+
+docker volume inspect web2_redis
+
+docker container run --rm -itd -p 6379:6379 --name redis \
+  --net firstnetwork -v web2_redis:/data redis:3.2-alpine
+
+docker exec redis redis-cli SAVE
+
+docker container stop redis
+
+docker container stop web2
+```
+> ###### Sharing Data Between Containers
+```
+docker build -t web2 .
+
+docker container run --rm -itd -p 5000:5000 -e FLASK_APP=app.py \
+  -e FLASK_DEBUG=1 --name web2 --net firstnetwork -v $PWD:/app web2
+
+docker container run --rm -itd -p 6379:6379 --name redis \
+  --net firstnetwork --volumes-from web2 redis:3.2-alpine
+
+docker exec -it redis sh
+
+cd /
+
+ls -la
+
+cat app/public/main.css
+
+docker container stop web2
+
+docker container stop redis
+
+docker container run --rm -itd -p 5000:5000 -e FLASK_APP=app.py \
+  -e FLASK_DEBUG=1 --name web2 --net firstnetwork -v $PWD:/app -v /app/public web2
+
+docker container run --rm -itd -p 6379:6379 --name redis \
+  --net firstnetwork --volumes-from web2 redis:3.2-alpine
+
+docker container exec redis cat /app/public/main.css
+
+docker container stop web2
+
+docker container stop redis
+```
