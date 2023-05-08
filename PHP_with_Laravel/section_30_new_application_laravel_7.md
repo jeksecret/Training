@@ -48,6 +48,8 @@ public function create()
 
 public function store(Request $request)
 {
+    $this->authorize('create', $post);
+    
     $inputs = request()->validate([
         'title' => 'required',
         'post_image' => 'file',
@@ -130,6 +132,11 @@ public function destroy(Post $post)
 php artisan make:policy PostPolicy --model=Post
 ```
 ```php
+public function view(User $user, Post $post): bool
+{
+    //
+    return $user->id === $post->user_id;
+}
 public function view(User $user, Post $post): bool
 {
     //
