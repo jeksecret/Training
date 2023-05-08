@@ -163,3 +163,11 @@ public function delete(User $user, Post $post): bool
 </form>
 @endcan
 ```
+`paginate`
+```php
+<div class="d-flex">
+    <div class="mx-auto">
+      {{$posts->links('pagination::bootstrap-4')}}
+    </div>
+</div>
+```
