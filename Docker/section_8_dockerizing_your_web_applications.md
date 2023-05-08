@@ -8,3 +8,8 @@
 - Log to STDOUT
 - Use ENV variables
 - Keep your app stateless
+
+`docker build command for laravel`
+```
+docker build -f ./Dockerfile -t laravel-app:1.0.0 .
+```
