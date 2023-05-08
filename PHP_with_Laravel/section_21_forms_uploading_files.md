@@ -43,6 +43,6 @@ Post::create($input);
 `display images using accessors`
 ```php
 public function getPathAttribute($value) {
-    return$this->directory . $value;
+    return $this->directory . $value;
 }
 ```
