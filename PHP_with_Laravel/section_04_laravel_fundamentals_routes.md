@@ -1,7 +1,7 @@
 # Insights on this Section
 ### Laravel Structure Overview:
 `config folder`
-- Where the configuration files are located._
+- Where the configuration files are located.
 
 `database folder`
 1. migrations folder
